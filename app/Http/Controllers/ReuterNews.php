@@ -71,22 +71,41 @@ class ReuterNews extends Controller
 
                 $noticiaData = substr($noticiaData, 0, 10);
 
-//                echo "<pre>";
-//                print_r($noticiaData);
-//                die;
-
                 $finalResponse = $this->gethtml($noticiaURL);
+
+                $noticiaConteudo = $this->getText($finalResponse);
 
                 $service = new NewsService();
                 $service->create([
                     'name' => $noticiaNome,
-                    'content' => 'WOW, I\'m learning PHP 2.',
+                    'content' => $noticiaConteudo,
                     'date' => $noticiaData,
                     'company' => $noticiaEmpresa
                 ]);
 
-
             }
         }
+    }
+
+    /**
+     * @param $html
+     * @return string
+     */
+    private function getText($html)
+    {
+
+        $re = '/(?<=\(Reuters\) - )(.*)(?=<div class="TrustBadge-trust-badge-20GM8">)/m';
+        $str = $html;
+
+        preg_match($re, $str, $matches, PREG_OFFSET_CAPTURE, 0);
+
+        $re = '/(?<=)(.*)(?=<\/p><div>)/m';
+        $str = $matches[0][0];
+
+        preg_match($re, $str, $matches, PREG_OFFSET_CAPTURE, 0);
+
+        $result = $matches[0][0];
+
+        return strip_tags($result);
     }
 }
