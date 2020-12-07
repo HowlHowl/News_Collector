@@ -1,4 +1,4 @@
-# Coletor de Notícias Jornalísticas do Mercado Financeiro
+# Coletor de Notícias do Mercado Financeiro
 
 Implementação de uma aplicação web capaz de coletar notícias jornalísticas 
 sobre empresas brasileiras disponibilizadas no portal https://www.reuters.com/finance.
