@@ -17,3 +17,7 @@ de cada uma das páginas web contendo notícias sobre as empresas selecionadas.
 2. Filtragem do código HTML das notícias coletadas, a fim de extrair apenas os atributos desejados de cada 
 notícia: Título, corpo, data de publicação e código da empresa.
 3. Criação das migrações para população do banco de dados com os dados coletados.
+
+## Dificuldades Encontradas
+- Decifrar exatamente como funciona a API do Reuters.
+- Coletar notícias publicadas há muito tempo no portal.
